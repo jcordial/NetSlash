@@ -10,7 +10,7 @@
 #include "BaseComponent.h"
 cordial::BaseObject::BaseObject(){
 	firstComponent = new COMPONENTS_LINKAGE();
-	firstComponent->component = new cordial::BaseComponent::BaseComponent();
+	firstComponent->component = new cordial::BaseComponent();
 }
 
 cordial::BaseObject::~BaseObject(){

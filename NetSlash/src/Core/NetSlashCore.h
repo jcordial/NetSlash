@@ -10,7 +10,7 @@
 #define __NetSlash__NetSlashCore__
 
 #include <iostream>
-#include "BaseObject.h"
+#include "../GameObjects/BaseObject.h"
 
 enum NetSlashStatus {
 	NetSlash_hasNotInitted = -1,

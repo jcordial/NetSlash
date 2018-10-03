@@ -9,8 +9,8 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include "NetSlashCore.h"
-#include "GameObject2D.h"
+#include "core/NetSlashCore.h"
+#include "GameObjects/GameObject2D.h"
 
 int main(int argc, const char * argv[])
 {
@@ -20,7 +20,7 @@ int main(int argc, const char * argv[])
 	
 	cordial::NetSlashCore::init();
 	
-	cordial::GameObject2D* ob1 = new cordial::GameObject2D::GameObject2D(), *obj2 = new cordial::GameObject2D::GameObject2D();
+	cordial::GameObject2D* ob1 = new cordial::GameObject2D(), *obj2 = new cordial::GameObject2D();
 	
 	int errorType = 0;
 	while (!errorType) {

@@ -7,7 +7,7 @@
 //
 
 #include "GameObject.h"
-#include "NetSlashCore.h"
+#include "../Core/NetSlashCore.h"
 using namespace cordial;
 
 cordial::GameObject::GameObject():cordial::BaseObject(){

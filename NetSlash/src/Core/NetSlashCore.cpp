@@ -20,7 +20,7 @@ void cordial::NetSlashCore::init(){
 		_isInit = true;
 		
 		
-		_rootObjectNode->object = new cordial::BaseObject::BaseObject();
+		_rootObjectNode->object = new cordial::BaseObject();
 		
 	}
 }
