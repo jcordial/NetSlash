@@ -13,50 +13,51 @@ bool cordial::NetSlashCore::_isInit = false;
 
 NetSlashStatus cordial::NetSlashCore::_status = NetSlash_hasNotInitted;
 
-ObjectNode* cordial::NetSlashCore::_rootObjectNode = new ObjectNode();
+ObjectNode* cordial::NetSlashCore::rootObjectNode = new ObjectNode();
+
+cordial::NetSlashCore::NetSlashCore(){
+    
+}
 
 void cordial::NetSlashCore::init(){
-	if(!_isInit){
-		_isInit = true;
-		
-		
-		_rootObjectNode->object = new cordial::BaseObject();
-		
-	}
+    if(!_isInit){
+        _isInit = true;
+        
+        rootObjectNode->object = new cordial::BaseObject();
+        
+    }
 }
 int cordial::NetSlashCore::run(){
-	if(!_isInit){
-		return NetSlash_fail_hasNotInitted;
-	}
-	
-	_isRunning = true;
-	while (_isRunning) {
-		ObjectNode* current = _rootObjectNode;
-		while (current!=0){
-			current->object->update();
-			current = current->next;
-		}
-		
-	}
-	
-	return NetSlash_exit;
+    if(!_isInit){
+        return NetSlash_fail_hasNotInitted;
+    }
+    
+    _isRunning = true;
+    while (_isRunning) {
+        ObjectNode* current = cordial::NetSlashCore::rootObjectNode;
+        while (current!=0){
+            current->object->update();
+            current = current->next;
+        }
+    }
+    
+    return NetSlash_exit;
 }
 
-void cordial::NetSlashCore::__registerObjectInLoop(cordial::BaseObject *object){
-	ObjectNode* current = _rootObjectNode, *next = current->next;
-	while (next!=0){
-		current = next;
-		next = current->next;
-	}
-	next = new ObjectNode();
-	next->prev = current;
-	current->next = next;
-	next->object = object;
-	
-	
+void cordial::NetSlashCore::registerObjectInLoop(cordial::BaseObject *object){
+    ObjectNode *current = cordial::NetSlashCore::rootObjectNode, *last = current->next, *next;
+    while (last!=0){
+        current = last;
+        last = last->next;
+    }
+    
+    next = new ObjectNode();
+    next->prev = last;
+    next->object = object;
+    next->next = 0;
 }
 
 NetSlashStatus cordial::NetSlashCore::getStatus(){
-	return _status;
+    return _status;
 }
 

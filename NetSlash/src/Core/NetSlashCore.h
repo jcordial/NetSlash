@@ -27,6 +27,7 @@ enum NetSlashRenderType {
 namespace cordial{
 	class GameObject;
 }
+
 struct ObjectNode {
  	cordial::BaseObject* object;
 	ObjectNode* next;
@@ -36,26 +37,27 @@ struct ObjectNode {
 namespace cordial{
 	class NetSlashCore {
 		static NetSlashStatus _status;
-		
-		static bool _isRunning;
-		static bool _shouldExit;
-		static bool _isInit;
-		
-		static ObjectNode* _rootObjectNode;
-		
+
+		static ObjectNode* rootObjectNode;
 		
 		static void update();
 		static void start();
 		
-
 	public:
 		static void init();
 		static int run();
 		
 		static NetSlashStatus getStatus();
+		static void registerObjectInLoop(BaseObject* object);
+	
+		NetSlashCore();
+
+	private:
+		static bool _isRunning;
+		static bool _shouldExit;
+		static bool _isInit;
 		
-		static void __registerObjectInLoop(BaseObject* object);
-		
+
 	};
 }
 #endif /* defined(__NetSlash__NetSlashCore__) */

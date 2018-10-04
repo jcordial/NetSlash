@@ -14,7 +14,7 @@ cordial::GameObject::GameObject():cordial::BaseObject(){
 	firstComponent = 0;
 	
 	//register ourselves with the engine core
-	cordial::NetSlashCore::__registerObjectInLoop(this);
+	cordial::NetSlashCore::registerObjectInLoop(this);
 }
 
 cordial::GameObject::~GameObject(){
